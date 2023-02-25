@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GeoQuiz</string>
-    <string name="question_text">Canberra is the capital of Australia.</string>
-    <string name="true_button">True</string>
-    <string name="false_button">False</string>
-    <string name="correct_toast">Correct!</string>
-    <string name="false_toast">Incorrect!</string>
+    <string name="q_australia">Canberra is the capital of Australia.</string>
+    <string name="q_germany">Berlin is the capital of Germany.</string>
+    <string name="q_iran">The Persian Golf is located along the southern border of Iran.</string>
+    <string name="q_us">California is the most western state in the US.</string>
+    <string name="btn_true">True</string>
+    <string name="btn_false">False</string>
+    <string name="tst_correct">Correct!</string>
+    <string name="tst_false">Incorrect!</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_prev">Prev</string>
 </resources>
