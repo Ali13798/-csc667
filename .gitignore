@@ -1,6 +1,3 @@
-# Temporarily exclude the final project file
-AKTMileageTracker
-
 # Github:
 # Gradle files
 .gradle/
