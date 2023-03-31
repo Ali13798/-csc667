@@ -1,9 +1,10 @@
 package com.example.geoquiz
 
-import android.content.Intent
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.example.geoquiz.databinding.ActivityMainBinding
 
@@ -54,7 +55,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
-        val msg = if (userAnswer == correctAnswer) R.string.tst_correct else R.string.tst_false
+        val msg = when {
+            quizViewModel.isCheater -> R.string.tst_judge
+            userAnswer == correctAnswer -> R.string.tst_correct
+            else -> R.string.tst_false
+        }
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
