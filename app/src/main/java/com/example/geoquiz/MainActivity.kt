@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import com.example.geoquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private val quizViewModel: QuizViewModel by viewModels()
 
