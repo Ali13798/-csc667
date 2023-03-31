@@ -39,7 +39,16 @@ class MainActivity : AppCompatActivity() {
         binding.btnCheat.setOnClickListener {
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
-            startActivity(intent)
+            cheatLauncher.launch(intent)
+        }
+    }
+
+    private val cheatLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            quizViewModel.isCheater =
+                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
         }
     }
 
