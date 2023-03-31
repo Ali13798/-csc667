@@ -15,6 +15,14 @@ class CheatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCheatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+       answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
+       binding.btnShowAnswer.setOnClickListener {
+           val answerText = when {
+               answerIsTrue -> R.string.btn_true
+               else -> R.string.btn_false
+           }
+           binding.tvAnswer.setText(answerText)
+       }
     }
 
     companion object {
