@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
-        val msg = if(userAnswer == correctAnswer) R.string.tst_correct else R.string.tst_false
+        val msg = if (userAnswer == correctAnswer) R.string.tst_correct else R.string.tst_false
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
