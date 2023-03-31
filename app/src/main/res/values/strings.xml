@@ -11,4 +11,8 @@
     <string name="tst_false">Incorrect!</string>
     <string name="btn_next">Next</string>
     <string name="btn_prev">Prev</string>
+    <string name="tv_cheat_warning">Are you sure you want to proceed?</string>
+    <string name="btn_show_answer">Show Answer</string>
+    <string name="btn_cheat">Cheat!</string>
+    <string name="tst_judge">Cheating is not cool.</string>
 </resources>

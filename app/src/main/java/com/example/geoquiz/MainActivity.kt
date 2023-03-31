@@ -1,5 +1,6 @@
 package com.example.geoquiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding.btnPrev.setOnClickListener {
             quizViewModel.moveToPrev()
             updateQuestion()
+        }
+
+        binding.btnCheat.setOnClickListener {
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
         }
     }
 
