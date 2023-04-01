@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragment_container"
-        android:name="us.ak_tech.criminalintent.CrimeDetailFragment"
+        android:name="us.ak_tech.criminalintent.CrimeListFragment"
         tools:context=".MainActivity" />
 </LinearLayout>
