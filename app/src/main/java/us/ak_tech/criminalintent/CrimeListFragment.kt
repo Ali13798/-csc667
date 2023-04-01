@@ -32,10 +32,10 @@ class CrimeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCrimeListBinding.inflate(inflater, container, false)
-       binding.rcvCrime.layoutManager = LinearLayoutManager(context)
-       val crimes = crimeListViewModel.crimes
-       val adapter = CrimeListAdapter(crimes)
-       binding.rcvCrime.adapter = adapter
+        binding.rcvCrime.layoutManager = LinearLayoutManager(context)
+        val crimes = crimeListViewModel.crimes
+        val adapter = CrimeListAdapter(crimes)
+        binding.rcvCrime.adapter = adapter
         return binding.root
     }
 
