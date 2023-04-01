@@ -6,9 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import us.ak_tech.criminalintent.databinding.ListItemCrimeBinding
 
-class CrimeHolder(
-    val binding: ListItemCrimeBinding
-) : RecyclerView.ViewHolder(binding.root) {
+class CrimeHolder(val binding: ListItemCrimeBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(crime: Crime) {
         binding.tvCrimeTitle.text = crime.title
         binding.tvCrimeDate.text = crime.date.toString()
