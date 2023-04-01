@@ -1,5 +1,7 @@
 package us.ak_tech.criminalintent
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import us.ak_tech.criminalintent.databinding.ListItemCrimeBinding
 
@@ -9,7 +11,20 @@ class CrimeHolder(
 
 }
 
-class CrimeListAdapter {
+class CrimeListAdapter(private val crimes: List<Crime>) : RecyclerView.Adapter<CrimeHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ListItemCrimeBinding.inflate(inflater, parent, false)
+        return CrimeHolder(binding)
+    }
 
+    override fun getItemCount() = crimes.size
+
+    override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
+        val crime = crimes[position]
+        holder.apply {
+            binding.tvCrimeTitle.text = crime.title
+            binding.tvCrimeDate.text = crime.date.toString()
+        }
+    }
 }
-
