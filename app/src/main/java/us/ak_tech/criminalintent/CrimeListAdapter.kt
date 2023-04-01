@@ -8,6 +8,10 @@ import us.ak_tech.criminalintent.databinding.ListItemCrimeBinding
 class CrimeHolder(
     val binding: ListItemCrimeBinding
 ) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(crime: Crime) {
+        binding.tvCrimeTitle.text = crime.title
+        binding.tvCrimeDate.text = crime.date.toString()
+    }
 
 }
 
@@ -23,8 +27,7 @@ class CrimeListAdapter(private val crimes: List<Crime>) : RecyclerView.Adapter<C
     override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
         val crime = crimes[position]
         holder.apply {
-            binding.tvCrimeTitle.text = crime.title
-            binding.tvCrimeDate.text = crime.date.toString()
+            holder.bind(crime)
         }
     }
 }
