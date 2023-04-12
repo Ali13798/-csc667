@@ -7,7 +7,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class CrimeListViewModel : ViewModel() {
-    val crimes = mutableListOf<Crime>()
+    private val crimes = mutableListOf<Crime>()
+    private val crimeRepository = CrimeRepository.get()
 
     init {
         viewModelScope.launch {
@@ -16,17 +17,6 @@ class CrimeListViewModel : ViewModel() {
     }
 
     suspend fun loadCrimes(): List<Crime> {
-        // delay(2000)
-        val result = mutableListOf<Crime>()
-        for (i in 0..99) {
-            val crime = Crime(
-                id = UUID.randomUUID(),
-                title = "Crime $i",
-                date = Date(),
-                isSolved = false
-            )
-            result += crime
-        }
-        return result
+        return crimeRepository.getCrimes()
     }
 }
