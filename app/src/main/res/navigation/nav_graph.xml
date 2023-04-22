@@ -9,5 +9,14 @@
         android:name="us.ak_tech.criminalintent.CrimeListFragment"
         android:label="CrimeListFragment"
         tools:layout="@layout/fragment_crime_list"
-        android:id="@+id/crimeListFragment" />
+        android:id="@+id/crimeListFragment">
+        <action
+            android:id="@+id/show_crime_detail"
+            app:destination="@id/crimeDetailFragment" />
+    </fragment>
+    <fragment
+        android:name="us.ak_tech.criminalintent.CrimeDetailFragment"
+        android:label="CrimeDetailFragment"
+        tools:layout="@layout/fragment_crime_detail"
+        android:id="@+id/crimeDetailFragment" />
 </navigation>
