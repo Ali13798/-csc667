@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -40,7 +41,9 @@ class CrimeListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val crimes = crimeListViewModel.loadCrimes()
-                binding.rcvCrime.adapter = CrimeListAdapter(crimes)
+                binding.rcvCrime.adapter = CrimeListAdapter(crimes) {
+                    findNavController().navigate(R.id.show_crime_detail)
+                }
             }
         }
     }
