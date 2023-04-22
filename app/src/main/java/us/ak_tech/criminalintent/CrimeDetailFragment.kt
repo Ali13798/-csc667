@@ -40,6 +40,9 @@ class CrimeDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             etCrimeTitle.doOnTextChanged { text, _, _, _ ->
+                crimeDetailViewModel.updateCrime { old_crime ->
+                    old_crime.copy(title = text.toString())
+                }
             }
 
             btnCrimeDate.apply {
@@ -47,6 +50,9 @@ class CrimeDetailFragment : Fragment() {
             }
 
             cbCrimeSolved.setOnCheckedChangeListener { _, isChecked ->
+                crimeDetailViewModel.updateCrime { old_crime ->
+                    old_crime.copy(isSolved = isChecked)
+                }
             }
         }
 
