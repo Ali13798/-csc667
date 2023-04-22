@@ -41,8 +41,12 @@ class CrimeListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val crimes = crimeListViewModel.loadCrimes()
-                binding.rcvCrime.adapter = CrimeListAdapter(crimes) {
-                    findNavController().navigate(R.id.show_crime_detail)
+                binding.rcvCrime.adapter = CrimeListAdapter(crimes) { crimeId ->
+                    findNavController().navigate(
+                        CrimeListFragmentDirections.showCrimeDetail(
+                            crimeId
+                        )
+                    )
                 }
             }
         }
