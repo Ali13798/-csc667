@@ -1,17 +1,22 @@
 package us.ak_tech.criminalintent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import us.ak_tech.criminalintent.databinding.FragmentCrimeDetailBinding
 import java.util.*
 
 
+private const val TAG = "CrimeDetailFragment"
+
 class CrimeDetailFragment : Fragment() {
     private lateinit var crime: Crime
+    private val args: CrimeDetailFragmentArgs by navArgs()
     private var _binding: FragmentCrimeDetailBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
@@ -26,6 +31,7 @@ class CrimeDetailFragment : Fragment() {
             date = Date(),
             isSolved = false
         )
+        Log.d(TAG, "crimeID: ${args.crimeId}")
     }
 
     override fun onCreateView(
