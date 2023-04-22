@@ -18,5 +18,9 @@
         android:name="us.ak_tech.criminalintent.CrimeDetailFragment"
         android:label="CrimeDetailFragment"
         tools:layout="@layout/fragment_crime_detail"
-        android:id="@+id/crimeDetailFragment" />
+        android:id="@+id/crimeDetailFragment">
+        <argument
+            android:name="crimeId"
+            app:argType="java.util.UUID" />
+    </fragment>
 </navigation>
