@@ -1,16 +1,18 @@
 package us.ak_tech.criminalintent
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.databinding.FragmentCrimeDetailBinding
-import java.util.*
 
 
 class CrimeDetailFragment : Fragment() {
@@ -46,6 +48,27 @@ class CrimeDetailFragment : Fragment() {
 
             cbCrimeSolved.setOnCheckedChangeListener { _, isChecked ->
             }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                crimeDetailViewModel.crime.collect { crime ->
+                    crime?.let {
+                        updateUi(it)
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun updateUi(crime: Crime) {
+        binding.apply {
+            if (etCrimeTitle.text.toString() != crime.title) {
+                etCrimeTitle.setText(crime.title)
+            }
+            btnCrimeDate.text = crime.date.toString()
+            cbCrimeSolved.isChecked = crime.isSolved
         }
     }
 
