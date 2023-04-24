@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.databinding.FragmentCrimeDetailBinding
@@ -45,10 +46,6 @@ class CrimeDetailFragment : Fragment() {
                 }
             }
 
-            btnCrimeDate.apply {
-                isEnabled = false
-            }
-
             cbCrimeSolved.setOnCheckedChangeListener { _, isChecked ->
                 crimeDetailViewModel.updateCrime { old_crime ->
                     old_crime.copy(isSolved = isChecked)
@@ -74,6 +71,11 @@ class CrimeDetailFragment : Fragment() {
                 etCrimeTitle.setText(crime.title)
             }
             btnCrimeDate.text = crime.date.toString()
+            btnCrimeDate.setOnClickListener {
+                findNavController().navigate(
+                    CrimeDetailFragmentDirections.selectDate()
+                )
+            }
             cbCrimeSolved.isChecked = crime.isSolved
         }
     }
