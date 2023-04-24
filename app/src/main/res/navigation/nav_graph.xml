@@ -29,5 +29,9 @@
     <dialog
         android:id="@+id/datePickerFragment"
         android:name="us.ak_tech.criminalintent.DatePickerFragment"
-        android:label="DatePickerFragment" />
+        android:label="DatePickerFragment">
+        <argument
+            android:name="crimeDate"
+            app:argType="java.util.Date" />
+    </dialog>
 </navigation>
