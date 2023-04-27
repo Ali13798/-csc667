@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import us.ak_tech.criminalintent.Crime
-import java.util.UUID
+import java.util.*
 
 
 @Dao

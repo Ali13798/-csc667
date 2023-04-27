@@ -2,10 +2,9 @@ package us.ak_tech.criminalintent
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import us.ak_tech.criminalintent.databinding.ListItemCrimeBinding
-import java.util.UUID
+import java.util.*
 
 class CrimeHolder(val binding: ListItemCrimeBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(crime: Crime, onCrimeClicked: (crimeId: UUID) -> Unit) {

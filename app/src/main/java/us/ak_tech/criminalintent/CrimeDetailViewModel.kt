@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.util.UUID
+import java.util.*
 
 
 class CrimeDetailViewModel(crimeId: UUID) : ViewModel() {
@@ -33,7 +33,7 @@ class CrimeDetailViewModel(crimeId: UUID) : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        
+
         crime.value?.let {
             crimeRepository.updateCrime(it)
         }

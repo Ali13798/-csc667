@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.databinding.FragmentCrimeDetailBinding
-import java.util.Date
+import java.util.*
 
 
 class CrimeDetailFragment : Fragment() {
