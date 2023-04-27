@@ -21,7 +21,6 @@ class CrimeRepository private constructor(
             CrimeDatabase::class.java,
             DB_NAME
         )
-        .createFromAsset(DB_NAME)
         .build()
 
     suspend fun getCrimes(): List<Crime> = db.crimeDao().getCrimes()
