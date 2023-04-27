@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.databinding.FragmentCrimeListBinding
+import java.util.*
 
 
 class CrimeListFragment : Fragment() {
@@ -61,5 +62,30 @@ class CrimeListFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.fragment_crime_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.new_crime -> {
+                showNewCrime()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showNewCrime() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val newCrime = Crime(
+                id = UUID.randomUUID(),
+                title = "",
+                date = Date(),
+                isSolved = false
+            )
+            crimeListViewModel.addCrime(newCrime)
+            findNavController().navigate(
+                CrimeListFragmentDirections.showCrimeDetail(newCrime.id)
+            )
+        }
     }
 }
