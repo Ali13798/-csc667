@@ -5,4 +5,6 @@
     <string name="tv_crime_details_label">Details</string>
     <string name="cb_crime_solved_label">Solved</string>
     <string name="btn_new_crime">New Crime</string>
+    <string name="btn_crime_suspect_text">Choose Suspect</string>
+    <string name="btn_crime_report_text">Send Crime Report</string>
 </resources>
