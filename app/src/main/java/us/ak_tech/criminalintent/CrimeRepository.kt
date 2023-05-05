@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.database.CrimeDatabase
+import us.ak_tech.criminalintent.database.migration_1_2
 import java.util.*
 
 
@@ -21,6 +22,7 @@ class CrimeRepository private constructor(
             CrimeDatabase::class.java,
             DB_NAME
         )
+        .addMigrations(migration_1_2)
         .build()
 
     suspend fun getCrimes(): List<Crime> = db.crimeDao().getCrimes()
