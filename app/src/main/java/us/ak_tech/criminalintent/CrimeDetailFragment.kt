@@ -1,7 +1,9 @@
 package us.ak_tech.criminalintent
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,8 +32,10 @@ class CrimeDetailFragment : Fragment() {
     }
     private val selectSuspect = registerForActivityResult(
         ActivityResultContracts.PickContact()
-    ) {
-//        handle reqeust
+    ) { uri: Uri? ->
+        uri?.let {
+            parseContactSelection(it)
+        }
     }
     private var _binding: FragmentCrimeDetailBinding? = null
     private val binding
@@ -134,6 +138,22 @@ class CrimeDetailFragment : Fragment() {
             R.string.crime_report,
             crime.title, dateString, solvedString, suspectText
         )
+    }
+
+    private fun parseContactSelection(contactUri: Uri) {
+        val queryFields = arrayOf(ContactsContract.Contacts.DISPLAY_NAME)
+
+        val queryCursor = requireActivity().contentResolver
+            .query(contactUri, queryFields, null, null, null)
+
+        queryCursor?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val suspect = cursor.getString(0)
+                crimeDetailViewModel.updateCrime { old_crime ->
+                    old_crime.copy(suspect = suspect)
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
