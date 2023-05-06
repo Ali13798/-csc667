@@ -1,5 +1,6 @@
 package us.ak_tech.criminalintent
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -86,6 +87,15 @@ class CrimeDetailFragment : Fragment() {
                 )
             }
             cbCrimeSolved.isChecked = crime.isSolved
+
+            btnCrimeReport.setOnClickListener {
+                val reportIntent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, getCrimeReport(crime))
+                    putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject))
+                }
+                startActivity(reportIntent)
+            }
         }
     }
 

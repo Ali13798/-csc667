@@ -47,6 +47,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_crime_report_text"
+        android:id="@+id/btn_crime_report"
         android:text="@string/btn_crime_report_text" />
 </LinearLayout>
