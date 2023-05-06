@@ -94,7 +94,11 @@ class CrimeDetailFragment : Fragment() {
                     putExtra(Intent.EXTRA_TEXT, getCrimeReport(crime))
                     putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject))
                 }
-                startActivity(reportIntent)
+                val chooserIntent = Intent.createChooser(
+                    reportIntent,
+                    getString(R.string.send_report)
+                )
+                startActivity(chooserIntent)
             }
         }
     }
