@@ -17,6 +17,7 @@ import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import us.ak_tech.criminalintent.databinding.FragmentCrimeDetailBinding
 import android.text.format.DateFormat
+import androidx.activity.result.contract.ActivityResultContracts
 import java.util.*
 
 
@@ -26,6 +27,11 @@ class CrimeDetailFragment : Fragment() {
     private val args: CrimeDetailFragmentArgs by navArgs()
     private val crimeDetailViewModel: CrimeDetailViewModel by viewModels {
         CrimeDetailViewModelFactory(args.crimeId)
+    }
+    private val selectSuspect = registerForActivityResult(
+        ActivityResultContracts.PickContact()
+    ) {
+//        handle reqeust
     }
     private var _binding: FragmentCrimeDetailBinding? = null
     private val binding
@@ -56,6 +62,10 @@ class CrimeDetailFragment : Fragment() {
                 crimeDetailViewModel.updateCrime { old_crime ->
                     old_crime.copy(isSolved = isChecked)
                 }
+            }
+
+            btnCrimeSuspect.setOnClickListener {
+                selectSuspect.launch(null)
             }
         }
 
@@ -99,6 +109,10 @@ class CrimeDetailFragment : Fragment() {
                     getString(R.string.send_report)
                 )
                 startActivity(chooserIntent)
+            }
+
+            btnCrimeSuspect.text = crime.suspect.ifEmpty {
+                getString(R.string.btn_crime_suspect_text)
             }
         }
     }
